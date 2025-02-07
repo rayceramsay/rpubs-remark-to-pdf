@@ -4,10 +4,6 @@
  * The following code is based off of https://github.com/bellbind/remarkjs-pdf
  */
 
-// commandline PDF converter for remark.js html
-// $ npm install puppeteer
-// $ node remarkjs-pdf.js slide.html slide.pdf
-
 const fs = require('fs')
 const path = require('path')
 const process = require('process')
@@ -74,13 +70,8 @@ async function main() {
     const browser = await puppeteer.launch()
     try {
         const rpubsHtml = params.html
-        // const remarkHtml = await getRemarkURLFromRpubs(browser, rpubsHtml)
-        // if (!remarkHtml) {
-        //     console.error(`Could not extract Remark slides URL from ${rpubsHtml}`)
-        //     process.exit(5)
-        // }
-        const remarkHtml = rpubsHtml
-        await convertPdf(browser, { ...params, hmtl: remarkHtml })
+        const remarkHtml = await getRemarkURLFromRpubs(browser, rpubsHtml)
+        await convertPdf(browser, { ...params, html: remarkHtml })
         console.log(`Finished.`)
         await browser.close()
     } catch (err) {
@@ -91,7 +82,18 @@ async function main() {
 }
 
 async function getRemarkURLFromRpubs(browser, rpubsURL) {
-    return null
+    const page = await browser.newPage()
+    await page.goto(rpubsURL)
+
+    await page.waitForSelector('#payload iframe', { timeout: 10000 })
+    remarkURL = await page
+        .locator('#payload iframe')
+        .map((iframe) => iframe.src)
+        .wait()
+
+    await page.close()
+
+    return remarkURL
 }
 
 async function convertPdf(browser, { html, pdf, name, size }) {

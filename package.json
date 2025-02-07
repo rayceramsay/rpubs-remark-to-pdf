@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/rayceramsay/rpubs-remark-to-pdf/issues"
   },
-  "homepage": "https://github.com/rayceramsay/rpubs-remark-to-pdf#readme"
+  "homepage": "https://github.com/rayceramsay/rpubs-remark-to-pdf#readme",
+  "dependencies": {
+    "puppeteer": "^24.2.0"
+  }
 }

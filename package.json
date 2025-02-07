@@ -1,0 +1,19 @@
+{
+  "name": "rpubs-remark-to-pdf",
+  "version": "1.0.0",
+  "description": "Converts Remark.js slides hosted on RPubs to a PDF",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rayceramsay/rpubs-remark-to-pdf.git"
+  },
+  "author": "Rayce Ramsay",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/rayceramsay/rpubs-remark-to-pdf/issues"
+  },
+  "homepage": "https://github.com/rayceramsay/rpubs-remark-to-pdf#readme"
+}

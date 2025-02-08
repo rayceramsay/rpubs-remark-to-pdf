@@ -36,3 +36,7 @@ By default, the slide size is inferred automatically. You can also customize thi
 ```sh
 $ REMARKJS_SIZE=1024:768 npx rpubs-remark-to-pdf rpubs-remark-to-pdf https://rpubs.com/<your_slides>
 ```
+
+## Acknowledgements
+
+This script is based heavily off of [remarkjs-pdf](https://github.com/bellbind/remarkjs-pdf).

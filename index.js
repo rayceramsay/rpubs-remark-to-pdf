@@ -122,7 +122,7 @@ async function convertPdf(browser, { html, pdf, name, size }) {
     const ratio = await page.evaluate((ss) => Function(`return ${ss}`)().getRatio(), name)
     // size by comparing chrome view-area and pdf view-area
     const [w, h] = size
-        ? size
+        ? [`${size[0]}px`, `${size[1]}px`]
         : slideWidth && slideHeight
         ? [slideWidth, slideHeight]
         : ratio === '4:3'

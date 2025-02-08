@@ -16,8 +16,8 @@ main().catch((err) => {
 
 // check args
 function getParams() {
-    if (process.argv.length < 3) {
-        console.error(`node ${path.basename(__filename)} HTML_PATH [PDF_PATH]`)
+    if (process.argv.length < 3 || process.argv.length > 4) {
+        console.error(`USAGE: npx ${path.basename(__filename)} HTML_PATH [PDF_PATH]`)
         process.exit(1)
     }
 
@@ -66,7 +66,7 @@ function pdfNameFromUrl(url) {
 // main for browser lifecycle
 async function main() {
     const params = getParams()
-    console.log(`Convert ${params.html} to ${params.pdf} ...`)
+    console.log(`Converting ${params.html} to ${params.pdf} ...`)
     const browser = await puppeteer.launch()
     try {
         const rpubsHtml = params.html
